@@ -1,0 +1,46 @@
+package CASE_Model_Transformations
+public
+	with Base_Types;
+	
+	-- CASE message header
+	data CASE_MsgHeader
+	end CASE_MsgHeader;
+	data implementation CASE_MsgHeader.Impl
+		subcomponents
+			src: data Base_Types::Integer_32;
+			dst: data Base_Types::Integer_32;
+			trusted: data Base_Types::Boolean;
+			HMAC: data Base_Types::Boolean;
+	end CASE_MsgHeader.Impl;
+	
+	-- CASE RF Message structure
+	data CASE_RF_Msg
+	end CASE_RF_Msg;
+	
+	data implementation CASE_RF_Msg.Impl
+		subcomponents
+			header: data CASE_MsgHeader.Impl;
+			payload: data;
+	end CASE_RF_Msg.Impl;
+	
+		-- WIFI Message structure
+	data CASE_WIFI_Msg
+	end CASE_WIFI_Msg;
+	
+	data implementation CASE_WIFI_Msg.Impl
+		subcomponents
+			crc: data Base_Types::Boolean;
+			message: data Base_Types::String;
+	end CASE_WIFI_Msg.Impl;
+	
+	-- UART Message structure
+	data CASE_UART_Msg
+	end CASE_UART_Msg;
+	
+	data implementation CASE_UART_Msg.Impl
+		subcomponents
+			crc: data Base_Types::Boolean;
+			message: data Base_Types::String;
+	end CASE_UART_Msg.Impl;
+	
+end CASE_Model_Transformations;
